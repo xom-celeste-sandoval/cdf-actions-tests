@@ -25,7 +25,6 @@ jobs:
 
             - name: Deploy transformations
               uses: cognitedata/transformations-cli@main
-                if: false  # Remove this line or this wont run! ;)
               env:
                   # Credentials to be used when running your transformations,
                   # as referenced in your manifests:
