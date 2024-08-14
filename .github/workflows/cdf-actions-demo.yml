@@ -11,7 +11,7 @@ jobs:
             - name: Extract branch name
               shell: bash
               # If branch name has hyphens, replace with underscores
-              run: echo "##[set-output name=name;]$(echo ${GITHUB_REF#refs/heads/} | sed -e s/-/_/g)"
+              run: echo "name=$(echo ${GITHUB_REF#refs/heads/} | sed -e s/-/_/g)" >> $GITHUB_ENV
               id: extract_name
 
             - name: Resolve secrets
@@ -19,8 +19,8 @@ jobs:
               env:
                   BRANCH: ${{ steps.extract_name.outputs.name }}
               run: |
-                  echo "##[set-output name=transformations_client_secret;]$(echo transformations_client_secret_${BRANCH})"
-                  echo "##[set-output name=cognite_client_secret;]$(echo cognite_client_secret_${BRANCH})"
+                  echo "transformations_client_secret=$(echo transformations_client_secret_${BRANCH})" >> $GITHUB_ENV
+                  echo "cognite_client_secret=$(echo cognite_client_secret_${BRANCH})" >> $GITHUB_ENV
               id: extract_secrets
 
             - name: Deploy transformations
