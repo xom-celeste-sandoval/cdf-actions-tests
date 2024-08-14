@@ -1,0 +1,15 @@
+name: Python application
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Run python script
+        run: python hello.py
