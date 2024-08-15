@@ -8,7 +8,7 @@ ignoreNullFields: False  # Optional, default: true
 
 query:
   # The path to a file containing the SQL query for this transformation.
-  file: transformation_1.sql
+  file: transformation.sql
 
 # It is also possible to keep the SQL query here
 # query: "select 1 as key, 'asd' as name, 'asd' as externalId"
@@ -35,9 +35,6 @@ destination:
 action: upsert  # Optional, default: upsert
 
 # List of email addresses to send emails to on transformation errors
-notifications:  # Optional, default: null
-  - santiago_ortiz@epam.com
-  # - example1@cognite.com
 
 authentication:
   # The following are explicit values, not environment variables
